@@ -1,0 +1,47 @@
+{
+  "name": "Crypto Mining Detector and Blocker",
+  "description": "Detect and Block Crypto Mining scripts",
+  "version": "1.0",
+  "author": "Pooriaanv",
+  "manifest_version": 2,
+  "browser_action": {
+    "default_title": "Crypto Mining Detector and Blocker",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "images/icon16.png",
+      "32": "images/icon32.png",
+      "48": "images/icon48.png",
+      "128": "images/icon128.png"
+    }
+  },
+
+  "icons": {
+    "16": "images/icon16.png",
+    "32": "images/icon32.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  },
+    
+  "background": {
+    "scripts": [
+      "js/background.js"
+    ],
+    "persistent": true
+  },
+  "content_scripts":[
+    {
+      "matches": ["http://*/*","https://*/*"],
+      "js": ["js/detect.js"],
+      "run_at": "document_end"
+
+    }
+  ],
+  "permissions": [
+    "activeTab",
+    "storage",
+    "webRequest",
+    "webRequestBlocking",
+    "webNavigation",
+    "*://*/*"
+  ]
+}
